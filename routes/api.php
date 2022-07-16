@@ -1,0 +1,24 @@
+<?php
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::get('/post', 'App\Http\Controllers\PostController@index'); //Mostrar todos los registros
+Route::post('/post', 'App\Http\Controllers\PostController@store'); //Crear un registro
+Route::put('/post/{id}', 'App\Http\Controllers\PostController@update');
+Route::delete('/post/{id}', 'App\Http\Controllers\PostController@destroy');
